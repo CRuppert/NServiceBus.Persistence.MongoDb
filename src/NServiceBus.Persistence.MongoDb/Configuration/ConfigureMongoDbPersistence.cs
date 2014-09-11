@@ -22,7 +22,10 @@ namespace NServiceBus.Persistence.MongoDB.Configuration
 
             config.Configurer.RegisterSingleton<MongoDatabase>(database);
             config.Configurer.RegisterSingleton<MongoServer>(server);
+            RegisterTimeoutDataClassMap.Register();
             config.Configurer.RegisterSingleton<MongoDbRepository>(new MongoDbRepository(database));
+            config.Configurer.RegisterSingleton<MongoDbTimeoutRepository>(new MongoDbTimeoutRepository(database));
+            
             return config;
         }
 
